@@ -1,5 +1,6 @@
 class bankroll():
-    def __init__(self, saldo):
+    def __init__(self, nombre, saldo):
+        self.nombre = nombre
         self.saldo = saldo
         
 class apuesta():
@@ -42,8 +43,23 @@ class apuesta():
             except:
                 print("caracter invalido")
                 
-FerBank = bankroll(100)
-apuesta1 = apuesta(1.5, FerBank)
-apuesta1.monto_a_Apostar()
-apuesta1.resolver("w")
-print(FerBank.saldo)
+                
+print("----Menu Principal----")
+print("1. crear partida 2. ver historial de partidas  3. resolver apuesta 4. ver saldo , 5. salir")
+
+listapartidas = []
+while True:
+    seleccion = input("que quieres hacer: ")
+    if seleccion == "1":
+        crearpartida = input("ingresa el nombre de tu partida:  ")
+        cantidadinicial = input(("cuanto tienes en tu bank: "))
+        cantidadinicial = int(cantidadinicial)
+        crearpartida = bankroll(crearpartida, cantidadinicial)
+        listapartidas.append(crearpartida)
+        print("empiezas con: ", crearpartida.saldo)
+        
+    elif seleccion == "5":
+        break
+ 
+for partida in listapartidas:
+    print(partida.nombre, "-", partida.saldo)  
