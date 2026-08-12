@@ -90,12 +90,24 @@ while True:
                 momionuevo = float(momionuevo)
                 banknuevo = partidaseleccionada
                 nuevaapuesta =apuesta(momionuevo, banknuevo)
-                nuevaapuesta.monto_a_Apostar()
                 partidaseleccionada.agregaralhistorial(nuevaapuesta)
                 
             elif seleccion2 =="3":
                 for x, y in  enumerate(partidaseleccionada.historial):
                     print(x, "-", y)
+                    
+                resueltaosalir = input('escribe "salir para salir, o resolver para resolver tu apuesta')
+                
+                
+                if resueltaosalir == "resolver":
+                    
+                    
+                    resolverapuesta = input("selecciona la apuesta a resolver(numero): ")
+                    resolverapuesta = int(resolverapuesta)
+                    apuestaseleccionada = partidaseleccionada.historial[resolverapuesta]
+                    status1 = input('escribe "w" si se gano o "L" si se perdio')
+                    apuestaseleccionada.resolver(status1)
+                
                 
             elif seleccion2 == "4":
                 break
