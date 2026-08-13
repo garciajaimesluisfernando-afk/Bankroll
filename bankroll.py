@@ -54,65 +54,65 @@ class apuesta():
         return f"id: {self.id}, cantidad: {self.cantidadapostada}, status: {self.ganada} "
             
                 
-                
-print("----Menu Principal----")
-print("1. crear partida 2. partidas activas, 3. salir")
+if __name__ == "__main__":              
+    print("----Menu Principal----")
+    print("1. crear partida 2. partidas activas, 3. salir")
 
-listapartidas = []
-while True:
-    seleccion = input("que quieres hacer: ")
-    if seleccion == "1":
-        crearpartida = input("ingresa el nombre de tu partida:  ")
-        cantidadinicial = input(("cuanto tienes en tu bank: "))
-        cantidadinicial = int(cantidadinicial)
-        crearpartida = bankroll(crearpartida, cantidadinicial)
-        listapartidas.append(crearpartida)
-        print("empiezas con: ", crearpartida.saldo)
-        
-    elif seleccion == "2":
-        
-        for indice, partidas in enumerate(listapartidas):
-            print(indice, "-", partidas.nombre)
+    listapartidas = []
+    while True:
+        seleccion = input("que quieres hacer: ")
+        if seleccion == "1":
+            crearpartida = input("ingresa el nombre de tu partida:  ")
+            cantidadinicial = input(("cuanto tienes en tu bank: "))
+            cantidadinicial = int(cantidadinicial)
+            crearpartida = bankroll(crearpartida, cantidadinicial)
+            listapartidas.append(crearpartida)
+            print("empiezas con: ", crearpartida.saldo)
             
-        selectpartida = input("con que bank quieres trabajar?(numero): ")
-        selectpartida = int(selectpartida)
-        partidaseleccionada = listapartidas[selectpartida]
-        
-        print("1. detalles 2. agregar apuesta 3.historial apuestas 4. volver al menu principal")
-        while True:
-            seleccion2 = input("que le hacemos a tu bank?: ")
-            if seleccion2 == "1":
-                print("nombre: ", partidaseleccionada.nombre, "saldo: ", partidaseleccionada.saldo)
-                
+        elif seleccion == "2":
             
-            elif seleccion2 == "2":
-                momionuevo = input("cual es el momio de esta apuesta?: ")
-                momionuevo = float(momionuevo)
-                banknuevo = partidaseleccionada
-                nuevaapuesta =apuesta(momionuevo, banknuevo)
-                partidaseleccionada.agregaralhistorial(nuevaapuesta)
+            for indice, partidas in enumerate(listapartidas):
+                print(indice, "-", partidas.nombre)
                 
-            elif seleccion2 =="3":
-                for x, y in  enumerate(partidaseleccionada.historial):
-                    print(x, "-", y)
+            selectpartida = input("con que bank quieres trabajar?(numero): ")
+            selectpartida = int(selectpartida)
+            partidaseleccionada = listapartidas[selectpartida]
+            
+            print("1. detalles 2. agregar apuesta 3.historial apuestas 4. volver al menu principal")
+            while True:
+                seleccion2 = input("que le hacemos a tu bank?: ")
+                if seleccion2 == "1":
+                    print("nombre: ", partidaseleccionada.nombre, "saldo: ", partidaseleccionada.saldo)
                     
-                resueltaosalir = input('escribe "salir para salir, o resolver para resolver tu apuesta')
                 
-                
-                if resueltaosalir == "resolver":
+                elif seleccion2 == "2":
+                    momionuevo = input("cual es el momio de esta apuesta?: ")
+                    momionuevo = float(momionuevo)
+                    banknuevo = partidaseleccionada
+                    nuevaapuesta =apuesta(momionuevo, banknuevo)
+                    partidaseleccionada.agregaralhistorial(nuevaapuesta)
+                    
+                elif seleccion2 =="3":
+                    for x, y in  enumerate(partidaseleccionada.historial):
+                        print(x, "-", y)
+                        
+                    resueltaosalir = input('escribe "salir para salir, o resolver para resolver tu apuesta')
                     
                     
-                    resolverapuesta = input("selecciona la apuesta a resolver(numero): ")
-                    resolverapuesta = int(resolverapuesta)
-                    apuestaseleccionada = partidaseleccionada.historial[resolverapuesta]
-                    status1 = input('escribe "w" si se gano o "L" si se perdio')
-                    apuestaseleccionada.resolver(status1)
-                
-                
-            elif seleccion2 == "4":
-                break
-                
-                
-    elif seleccion == "3":
-        break
+                    if resueltaosalir == "resolver":
+                        
+                        
+                        resolverapuesta = input("selecciona la apuesta a resolver(numero): ")
+                        resolverapuesta = int(resolverapuesta)
+                        apuestaseleccionada = partidaseleccionada.historial[resolverapuesta]
+                        status1 = input('escribe "w" si se gano o "L" si se perdio')
+                        apuestaseleccionada.resolver(status1)
+                    
+                    
+                elif seleccion2 == "4":
+                    break
+                    
+                    
+        elif seleccion == "3":
+            break
  
